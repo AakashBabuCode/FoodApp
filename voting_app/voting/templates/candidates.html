@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidates</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Candidates List</h1>
+    <ul>
+        {% for candidate in candidates %}
+            <li>
+                <strong>{{ candidate.full_name }}</strong> - Position: {{ candidate.position.name }}<br>
+                Bio: {{ candidate.bio }}<br>
+                <img src="{{ candidate.profile_picture.url }}" alt="Profile Picture" style="width: 100px;"><br>
+                <a href="{% url 'vote' %}?candidate_id={{ candidate.id }}">Vote</a>
+            </li>
+        {% empty %}
+            <li>No candidates available.</li>
+        {% endfor %}
+        <a href="{% url 'add_candidate' %}">ADD CANDIDATE</a>
+        
+    </ul>
+</body>
+</html>
+

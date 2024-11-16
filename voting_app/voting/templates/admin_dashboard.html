@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <p>Total Voters: {{ total_voters }}</p>
+    <p>Total Candidates: {{ total_candidates }}</p>
+    <p>Total Votes: {{ total_votes }}</p>
+
+    <h2>Manage:</h2>
+    <ul>
+        <li><a href="{% url 'candidates_list' %}">View Candidates</a></li>
+        <li><a href="{% url 'positions_list' %}">View Positions</a></li>
+    </ul>
+
+    <a href="{% url 'voter_login' %}">Go to Voter Login</a>
+</body>
+</html>

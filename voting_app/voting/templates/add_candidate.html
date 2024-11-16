@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Candidate</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Add a New Candidate</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <select name="position" required>
+            {% for position in positions %}
+                <option value="{{ position.id }}">{{ position.name }}</option>
+            {% endfor %}
+        </select>
+        <textarea name="bio" placeholder="Bio" required></textarea>
+        <input type="file" name="profile_picture" required>
+        <button type="submit">Add Candidate</button>
+    </form>
+    
+    <a href="{% url 'candidates_list' %}">Back to Candidates List</a>
+</body>
+</html>
